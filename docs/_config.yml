@@ -1,2 +1,4 @@
 title: EazyOps API Documentation
-theme: jekyll-theme-minimal
+description: API reference for EazyOps cloud cost optimization platform
+theme: jekyll-theme-cayman
+markdown: kramdown
