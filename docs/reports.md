@@ -141,5 +141,3 @@ curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3
 - Organization report: `/api/reports/organisation/{id}`
 - Project report: `/api/reports/project/{id}`
 - Resource report: `/api/reports/resource/{id}`
-
-```

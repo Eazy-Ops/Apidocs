@@ -77,5 +77,3 @@ curl -X 'GET' \
 }
 ```
 This token is the final Bearer token for all subsequent API requests.
-
-```
