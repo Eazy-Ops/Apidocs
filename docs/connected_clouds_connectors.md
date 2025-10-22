@@ -110,3 +110,9 @@ curl 'https://rest.eazyops.cloud/api/connector/list?cloud_name=gcp' \
     }
 ]
 
+```
+
+**Notes:**
+
+- The `id` in the top-level response is the `connector_id` to pass in Overview API.
+- The `organisation` list is containing the `organisation_id` to pass in Overview API

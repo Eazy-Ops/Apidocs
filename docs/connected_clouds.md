@@ -53,4 +53,7 @@ curl 'https://rest.eazyops.cloud/api/clouds/connected-clouds' \
     ]
 }
 ```
+**Notes:**
+
+- The `name` in the top-level response is the name param for connector listing API.
 
