@@ -9,6 +9,10 @@ The EazyOps API provides programmatic access to user authentication, organizatio
 This document covers:
 
 - [User Authentication](authentication.md)
+- [Connected Clouds API](connected_clouds.md)
+- [Available Connectors API](connected_clouds_connectors.md)
+- [Overview API](overview_api.md)
+- [Resource Listing API](resource_listing_api.md)
 - [Reports API](reports.md)
 
 **All endpoints require HTTPS and JSON payloads.**
