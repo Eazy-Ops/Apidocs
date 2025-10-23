@@ -225,3 +225,4 @@ curl 'https://rest.eazyops.cloud/overview/organisation/7bbc83cd-ba37-4f8a-9e34-3
 - The `id` in the top-level response is the `organisation_id`.
 - Each object in the `projects` array contains an `id` which is the `project_id`.
 - These IDs can be used in the Reports API for type `organisation` or `project` respectively.
+- The currency for all amounts related data in reponse section is USD $.

@@ -145,3 +145,4 @@ curl 'https://rest.eazyops.cloud/api/resource/595258a8-0514-45f9-a549-dad3407d78
 
 - The `id` within each item in the `items` array is the `resource_id`.
 - This `resource_id` can be used in the Reports API for type `resource`.
+- The currency for all amounts related data in reponse section is USD $.

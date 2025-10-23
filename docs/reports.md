@@ -1,5 +1,3 @@
-
-
 ## 2. Reports API
 After obtaining the final access token, use it to fetch cost reports for organizations, projects, or individual resources.
 
@@ -18,10 +16,17 @@ Fetches the cost and savings report for an entire organization.
 | accept        | application/json, text/plain, */* |
 | Authorization	| Bearer <final_token> |
 
+**Query Parameters:**
+
+| Parameter    | Description                                   | Example |
+|--------------|-----------------------------------------------|---------|
+| `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
+| `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
+
 **Example cURL:**
 
 ```bash
-curl 'https://rest.eazyops.cloud/api/reports/organisation/7bbc83cd-ba37-4f8a-9e34-3d1e24701678' \
+curl 'https://rest.eazyops.cloud/api/reports/organisation/7bbc83cd-ba37-4f8a-9e34-3d1e24701678?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'Authorization: Bearer <final_token>'
 ```
@@ -56,6 +61,8 @@ curl 'https://rest.eazyops.cloud/api/reports/organisation/7bbc83cd-ba37-4f8a-9e3
   ]
 }
 ```
+**Notes:**
+- The currency for all amounts related data in reponse section is USD $.
 
 ### 2.2 Get Project Report
 **Endpoint:**
@@ -65,10 +72,17 @@ GET https://rest.eazyops.cloud/api/reports/project/{id}
 **Description:**
 Fetches cost and savings report for a specific project.
 
+**Query Parameters:**
+
+| Parameter    | Description                                   | Example |
+|--------------|-----------------------------------------------|---------|
+| `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
+| `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
+
 **Example cURL:**
 
 ```bash
-curl 'https://rest.eazyops.cloud/api/reports/project/940f1136-b310-463a-ae48-020e2ef1ad73' \
+curl 'https://rest.eazyops.cloud/api/reports/project/940f1136-b310-463a-ae48-020e2ef1ad73?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json' \
   -H 'Authorization: Bearer <final_token>'
 ```
@@ -95,6 +109,8 @@ curl 'https://rest.eazyops.cloud/api/reports/project/940f1136-b310-463a-ae48-020
   }
 }
 ```
+**Notes:**
+- The currency for all amounts related data in reponse section is USD $.
 
 ### 2.3 Get Resource Report
 **Endpoint:**
@@ -104,10 +120,17 @@ GET https://rest.eazyops.cloud/api/reports/resource/{id}
 **Description:**
 Fetches cost and saving report for a specific resource (disk, static IP, database, etc.).
 
+**Query Parameters:**
+
+| Parameter    | Description                                   | Example |
+|--------------|-----------------------------------------------|---------|
+| `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
+| `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
+
 **Example cURL:**
 
 ```bash
-curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3c2b98771a6' \
+curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3c2b98771a6?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json' \
   -H 'Authorization: Bearer <final_token>'
 ```
@@ -128,6 +151,8 @@ curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3
   "resource_type": "compute#disk"
 }
 ```
+**Notes:**
+- The currency for all amounts related data in reponse section is USD $.
 
 ### 2.4 Path Parameters for Reports API
 
