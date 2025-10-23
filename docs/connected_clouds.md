@@ -1,20 +1,23 @@
 ## Connected Clouds API
 
+The Connected Clouds API allows you to retrieve a list of cloud accounts that you have connected to EazyOps.
+
 ### Get Connected Clouds
 
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/clouds/connected-clouds
+`GET https://rest.eazyops.cloud/api/clouds/connected-clouds`
 
 **Description:**
-Retrieves a list of clouds that the user has integrated or against which discoveries have been performed.
+
+This endpoint retrieves a list of cloud accounts that you have integrated with EazyOps. The response includes the name of the cloud provider, the date the account was connected, and the number of projects associated with the account.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json, text/plain, */* |
-| Authorization	| Bearer <final_token> |
+| Header          | Value                               |
+|-----------------|-------------------------------------|
+| `accept`        | `application/json, text/plain, */*` |
+| `Authorization` | `Bearer <authentication_token>`     |
 
 **Example cURL:**
 
@@ -22,7 +25,7 @@ Retrieves a list of clouds that the user has integrated or against which discove
 curl 'https://rest.eazyops.cloud/api/clouds/connected-clouds' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: en-US,en;q=0.9' \
-  -H 'authorization: Bearer <final_token>' \
+  -H 'authorization: Bearer <authentication_token>' \
   -H 'origin: https://eazyops.cloud' \
   -H 'priority: u=1, i' \
   -H 'referer: https://eazyops.cloud/' \
@@ -53,7 +56,7 @@ curl 'https://rest.eazyops.cloud/api/clouds/connected-clouds' \
     ]
 }
 ```
+
 **Notes:**
 
-- The `name` in the top-level response is the name param for connector listing API.
-
+*   The `name` field in the response corresponds to the `cloud_name` parameter used in the [Get Available Connectors by Cloud Name](#get-available-connectors-by-cloud-name) endpoint.

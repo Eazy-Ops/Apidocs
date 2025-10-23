@@ -2,23 +2,24 @@
 
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/connector/list?cloud_name={cloud_name}
+`GET https://rest.eazyops.cloud/api/connector/list?cloud_name={cloud_name}`
 
 **Description:**
-Retrieves a list of available connectors for a specific cloud, identified by its name obtained from the "Get Connected Clouds" API.
+
+This endpoint retrieves a list of available connectors for a specific cloud provider. You can identify the cloud provider by its name, which can be obtained from the [Get Connected Clouds](connected_clouds.md) API.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json, text/plain, */* |
-| Authorization	| Bearer <final_token> |
+| Header          | Value                               |
+|-----------------|-------------------------------------|
+| `accept`        | `application/json, text/plain, */*` |
+| `Authorization` | `Bearer <authentication_token>`     |
 
 **Path Parameters:**
 
-| Parameter    | Description                                   | Example |
-|--------------|-----------------------------------------------|---------|
-| `cloud_name` | The name of the cloud (e.g., `gcp`, `azure`). | `gcp`   |
+| Parameter    | Description                                   | Example       |
+|--------------|-----------------------------------------------|---------------|
+| `cloud_name` | The name of the cloud (e.g., `gcp`, `azure`). | `gcp`         |
 
 **Example cURL:**
 
@@ -26,7 +27,7 @@ Retrieves a list of available connectors for a specific cloud, identified by its
 curl 'https://rest.eazyops.cloud/api/connector/list?cloud_name=gcp' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: en-US,en;q=0.9' \
-  -H 'authorization: Bearer <final_token>' \
+  -H 'authorization: Bearer <authentication_token>' \
   -H 'origin: https://eazyops.cloud' \
   -H 'priority: u=1, i' \
   -H 'referer: https://eazyops.cloud/' \
@@ -109,10 +110,9 @@ curl 'https://rest.eazyops.cloud/api/connector/list?cloud_name=gcp' \
         "updated_at": "2025-08-21T06:02:15.415474"
     }
 ]
-
 ```
 
 **Notes:**
 
-- The `id` in the top-level response is the `connector_id` to pass in Overview API.
-- The `organisation` list is containing the `organisation_id` to pass in Overview API
+*   The `id` in the response is the `connector_id` that you can use in the [Overview API](overview_api.md).
+*   The `organisation_id` is the ID of the organization that you can use in the [Overview API](overview_api.md).

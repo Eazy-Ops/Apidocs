@@ -1,22 +1,23 @@
-
-
 ## 1. User Authentication
 
-### 1.1 Generate User Token
+To ensure the security of your data, the EazyOps API uses a two-step authentication process. First, you generate a temporary token, which you then exchange for a final authentication token. This final token must be included in the `Authorization` header of all subsequent API requests.
 
-**Endpoint:**  
+### 1.1 Generate a Temporary Token
 
-POST https://rest.eazyops.cloud/api/v1/users
+**Endpoint:**
 
-**Description:**  
-Generates a temporary token for a user based on their email. This token is required for subsequent login.
+`POST https://rest.eazyops.cloud/api/v1/users`
+
+**Description:**
+
+This endpoint generates a temporary token for a user based on their email address. This token is required for the next step of the authentication process.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json |
-| Content-Type  | application/json |
+| Header         | Value              |
+|----------------|--------------------|
+| `accept`       | `application/json` |
+| `Content-Type` | `application/json` |
 
 **Request Payload:**
 
@@ -28,7 +29,8 @@ Generates a temporary token for a user based on their email. This token is requi
   "send_email": false
 }
 ```
-⚠️ Important: Never set "send_email": true for existing customers. Doing so may trigger unintended email notifications.
+
+⚠️ **Important:** Never set `"send_email": true` for existing customers. Doing so may trigger unintended email notifications.
 
 **Response Example:**
 
@@ -38,27 +40,28 @@ Generates a temporary token for a user based on their email. This token is requi
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
 **Notes:**
 
-The returned token is used for login in the next step.
+*   The returned token is a temporary token that must be used in the next step to obtain a final authentication token.
+*   This temporary token has a short expiration time and should be used immediately.
 
-This token has a short expiry and should be used immediately.
-
-### 1.2 Login with Token
+### 1.2 Exchange the Temporary Token for an Authentication Token
 
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/v1/users/login
+`GET https://rest.eazyops.cloud/api/v1/users/login`
 
 **Description:**
-Exchanges the token from the previous step for a final access token (Bearer) to authenticate API requests.
+
+This endpoint exchanges the temporary token from the previous step for a final authentication token (Bearer token). This token is used to authenticate all subsequent API requests.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json |
-| Authorization	| Bearer <token_from_previous_step> |
+| Header          | Value                                       |
+|-----------------|---------------------------------------------|
+| `accept`        | `application/json`                          |
+| `Authorization` | `Bearer <token_from_previous_step>`         |
 
 **Example cURL:**
 
@@ -76,4 +79,5 @@ curl -X 'GET' \
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
-This token is the final Bearer token for all subsequent API requests.
+
+This token is the final authentication token that you will use for all subsequent API requests. Make sure to store it securely.

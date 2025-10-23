@@ -1,10 +1,8 @@
-
-
 # EazyOps API Documentation
 
 ## Overview
 
-The EazyOps API provides programmatic access to user authentication, organization/project/resource cost reports, and strategic recommendations for cloud cost optimization.
+Welcome to the EazyOps API! Our API provides programmatic access to your cloud cost and resource data, enabling you to automate cost optimization workflows, build custom reports, and integrate EazyOps with your existing tools.
 
 This document covers:
 
@@ -19,7 +17,16 @@ This document covers:
 
 ---
 
+## Getting Started
+
+The EazyOps API is designed to be simple and intuitive. Here's a typical workflow:
+
+1.  **Authenticate:** Obtain an authentication token to access the API.
+2.  **Explore:** Discover your connected clouds and available connectors.
+3.  **Analyze:** Get an overview of your organization's cloud resources and costs.
+4.  **Optimize:** Identify cost-saving opportunities by listing resources and generating detailed reports.
+
 ## Authentication Flow Summary
-1.  Generate token for user email → `POST /api/v1/users`
-2.  Login with token → `GET /api/v1/users/login` → receive final Bearer token
-3.  Access reports → `GET /api/reports/{type}/{id}` using Bearer token
+1.  **Generate a temporary token:** `POST /api/v1/users`
+2.  **Exchange the temporary token for an authentication token:** `GET /api/v1/users/login`
+3.  **Access the API:** Use the authentication token in the `Authorization` header of your API requests.

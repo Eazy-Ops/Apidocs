@@ -1,25 +1,28 @@
 ## 2. Reports API
-After obtaining the final access token, use it to fetch cost reports for organizations, projects, or individual resources.
+
+The Reports API provides detailed cost and savings reports for your organizations, projects, and resources.
 
 ### 2.1 Get Organization Report
+
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/reports/organisation/{id}
+`GET https://rest.eazyops.cloud/api/reports/organisation/{id}`
 
 **Description:**
-Fetches the cost and savings report for an entire organization.
+
+This endpoint fetches a comprehensive cost and savings report for an entire organization. The report includes a summary of monthly and annual savings, monthly and annual spend, resource count, savings percentage, and a breakdown of savings by resource type.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json, text/plain, */* |
-| Authorization	| Bearer <final_token> |
+| Header          | Value                               |
+|-----------------|-------------------------------------|
+| `accept`        | `application/json, text/plain, */*` |
+| `Authorization` | `Bearer <authentication_token>`     |
 
 **Query Parameters:**
 
-| Parameter    | Description                                   | Example |
-|--------------|-----------------------------------------------|---------|
+| Parameter    | Description                                   | Example      |
+|--------------|-----------------------------------------------|--------------|
 | `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
 | `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
 
@@ -28,7 +31,7 @@ Fetches the cost and savings report for an entire organization.
 ```bash
 curl 'https://rest.eazyops.cloud/api/reports/organisation/7bbc83cd-ba37-4f8a-9e34-3d1e24701678?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json, text/plain, */*' \
-  -H 'Authorization: Bearer <final_token>'
+  -H 'Authorization: Bearer <authentication_token>'
 ```
 
 **Response Example:**
@@ -61,21 +64,25 @@ curl 'https://rest.eazyops.cloud/api/reports/organisation/7bbc83cd-ba37-4f8a-9e3
   ]
 }
 ```
+
 **Notes:**
-- The currency for all amounts related data in reponse section is USD $.
+
+*   The currency for all cost-related data in the response is USD ($).
 
 ### 2.2 Get Project Report
+
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/reports/project/{id}
+`GET https://rest.eazyops.cloud/api/reports/project/{id}`
 
 **Description:**
-Fetches cost and savings report for a specific project.
+
+This endpoint fetches a cost and savings report for a specific project.
 
 **Query Parameters:**
 
-| Parameter    | Description                                   | Example |
-|--------------|-----------------------------------------------|---------|
+| Parameter    | Description                                   | Example      |
+|--------------|-----------------------------------------------|--------------|
 | `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
 | `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
 
@@ -84,7 +91,7 @@ Fetches cost and savings report for a specific project.
 ```bash
 curl 'https://rest.eazyops.cloud/api/reports/project/940f1136-b310-463a-ae48-020e2ef1ad73?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json' \
-  -H 'Authorization: Bearer <final_token>'
+  -H 'Authorization: Bearer <authentication_token>'
 ```
 
 **Response Example:**
@@ -109,21 +116,25 @@ curl 'https://rest.eazyops.cloud/api/reports/project/940f1136-b310-463a-ae48-020
   }
 }
 ```
+
 **Notes:**
-- The currency for all amounts related data in reponse section is USD $.
+
+*   The currency for all cost-related data in the response is USD ($).
 
 ### 2.3 Get Resource Report
+
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/reports/resource/{id}
+`GET https://rest.eazyops.cloud/api/reports/resource/{id}`
 
 **Description:**
-Fetches cost and saving report for a specific resource (disk, static IP, database, etc.).
+
+This endpoint fetches a cost and savings report for a specific resource (e.g., disk, static IP, database).
 
 **Query Parameters:**
 
-| Parameter    | Description                                   | Example |
-|--------------|-----------------------------------------------|---------|
+| Parameter    | Description                                   | Example      |
+|--------------|-----------------------------------------------|--------------|
 | `start_date` | The start date for the report in `YYYY-MM-DD` format. | `2025-10-20` |
 | `end_date`   | The end date for the report in `YYYY-MM-DD` format.   | `2025-10-23` |
 
@@ -132,7 +143,7 @@ Fetches cost and saving report for a specific resource (disk, static IP, databas
 ```bash
 curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3c2b98771a6?start_date=2025-10-20&end_date=2025-10-23' \
   -H 'accept: application/json' \
-  -H 'Authorization: Bearer <final_token>'
+  -H 'Authorization: Bearer <authentication_token>'
 ```
 
 **Response Example:**
@@ -151,18 +162,20 @@ curl 'https://rest.eazyops.cloud/api/reports/resource/4d722ce9-e552-4aca-a39b-f3
   "resource_type": "compute#disk"
 }
 ```
+
 **Notes:**
-- The currency for all amounts related data in reponse section is USD $.
+
+*   The currency for all cost-related data in the response is USD ($).
 
 ### 2.4 Path Parameters for Reports API
 
-| Parameter | Description | Example |
-|---|---|---|
-| type | Entity type for report. One of organisation, project, resource | organisation |
-| id | UUID of the entity | 7bbc83cd-ba37-4f8a-9e34-3d1e24701678 |
+| Parameter | Description                                          |
+|-----------|------------------------------------------------------|
+| `type`    | The entity type for the report. One of `organisation`, `project`, or `resource`. |
+| `id`      | The UUID of the entity.                              |
 
 **Example Endpoints:**
 
-- Organization report: `/api/reports/organisation/{id}`
-- Project report: `/api/reports/project/{id}`
-- Resource report: `/api/reports/resource/{id}`
+*   Organization report: `/api/reports/organisation/{id}`
+*   Project report: `/api/reports/project/{id}`
+*   Resource report: `/api/reports/resource/{id}`

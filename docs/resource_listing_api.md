@@ -1,45 +1,48 @@
 ## Resource Listing API
 
+The Resource Listing API allows you to retrieve a list of resources for a specific project and resource type.
+
 ### List Resources by Project and Type
 
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/api/resource/{project_id}/list?type={type}&page=1&size=50&platform={platform}&sort_by_savings=desc
+`GET https://rest.eazyops.cloud/api/resource/{project_id}/list?type={type}&page=1&size=50&platform={platform}&sort_by_savings=desc`
 
 **Description:**
-Retrieves a paginated list of resources for a given project and resource type. The `project_id` can be obtained from the Overview API response.
+
+This endpoint retrieves a paginated list of resources for a given project and resource type. The `project_id` can be obtained from the [Overview API](overview_api.md) response.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json, text/plain, */* |
-| Authorization	| Bearer <final_token> |
+| Header          | Value                               |
+|-----------------|-------------------------------------|
+| `accept`        | `application/json, text/plain, */*` |
+| `Authorization` | `Bearer <authentication_token>`     |
 
 **Path Parameters:**
 
-| Parameter    | Description                                   | Example |
-|--------------|-----------------------------------------------|---------|
+| Parameter    | Description                                   | Example                                |
+|--------------|-----------------------------------------------|----------------------------------------|
 | `project_id` | The UUID of the project.                      | `595258a8-0514-45f9-a549-dad3407d78e4` |
 
 **Query Parameters:**
 
-| Parameter        | Description                                   | Example |
-|------------------|-----------------------------------------------|---------|
-| `type`           | The type of resource to list.                 | `database` |
-| `page`           | The page number for pagination.               | `1`     |
-| `size`           | The number of items per page.                 | `50`    |
-| `platform`       | The cloud platform (e.g., `gcp`, `aws`, `azure`). | `gcp`   |
-| `sort_by_savings`| Sort order for savings.                       | `desc`  |
+| Parameter         | Description                                   | Example    |
+|-------------------|-----------------------------------------------|------------|
+| `type`            | The type of resource to list.                 | `database` |
+| `page`            | The page number for pagination.               | `1`        |
+| `size`            | The number of items per page.                 | `50`       |
+| `platform`        | The cloud platform (e.g., `gcp`, `aws`, `azure`). | `gcp`      |
+| `sort_by_savings` | Sort order for savings.                       | `desc`     |
 
 **Available Resource Types:**
 
-- `log`
-- `disk`
-- `instance`
-- `database`
-- `cluster`
-- `bucket`
+*   `log`
+*   `disk`
+*   `instance`
+*   `database`
+*   `cluster`
+*   `bucket`
 
 **Example cURL:**
 
@@ -47,7 +50,7 @@ Retrieves a paginated list of resources for a given project and resource type. T
 curl 'https://rest.eazyops.cloud/api/resource/595258a8-0514-45f9-a549-dad3407d78e4/list?type=database&page=1&size=50&platform=gcp&sort_by_savings=desc' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: en-US,en;q=0.9' \
-  -H 'authorization: Bearer <final_token>' \
+  -H 'authorization: Bearer <authentication_token>' \
   -H 'origin: https://eazyops.cloud' \
   -H 'priority: u=1, i' \
   -H 'referer: https://eazyops.cloud/' \
@@ -143,6 +146,6 @@ curl 'https://rest.eazyops.cloud/api/resource/595258a8-0514-45f9-a549-dad3407d78
 
 **Notes:**
 
-- The `id` within each item in the `items` array is the `resource_id`.
-- This `resource_id` can be used in the Reports API for type `resource`.
-- The currency for all amounts related data in reponse section is USD $.
+*   The `id` within each item in the `items` array is the `resource_id`.
+*   This `resource_id` can be used in the [Reports API](reports.md) for `resource` reports.
+*   The currency for all cost-related data in the response is USD ($).

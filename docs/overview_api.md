@@ -1,34 +1,37 @@
 ## Overview API
 
+The Overview API provides a high-level overview of your organization's cloud resources, including resource counts, potential cost savings, and project-specific details.
+
 ### Get Organization Overview
 
 **Endpoint:**
 
-GET https://rest.eazyops.cloud/overview/organisation/{organisation_id}/{connector_id}?page=1&size=10
+`GET https://rest.eazyops.cloud/overview/organisation/{organisation_id}/{connector_id}?page=1&size=10`
 
 **Description:**
-Retrieves an overview of an organization, including resource counts, potential cost savings, and project-specific details.
+
+This endpoint retrieves a detailed overview of a specific organization. The response includes a summary of the organization's resources, potential cost savings, and a list of projects within the organization.
 
 **Request Headers:**
 
-| Header        | Value             |
-|---------------|-----------------|
-| accept        | application/json, text/plain, */* |
-| Authorization	| Bearer <final_token> |
+| Header          | Value                               |
+|-----------------|-------------------------------------|
+| `accept`        | `application/json, text/plain, */*` |
+| `Authorization` | `Bearer <authentication_token>`     |
 
 **Path Parameters:**
 
-| Parameter        | Description                                   | Example |
-|------------------|-----------------------------------------------|---------|
-| `organisation_id`| The UUID of the organization.                 | `7bbc83cd-ba37-4f8a-9e34-3d1e24701678` |
-| `connector_id`   | The UUID of the connector.                    | `a68028aa-7e48-4eb3-a5b5-7d1d74479610` |
+| Parameter         | Description                                | Example                                |
+|-------------------|--------------------------------------------|----------------------------------------|
+| `organisation_id` | The UUID of the organization.              | `7bbc83cd-ba37-4f8a-9e34-3d1e24701678` |
+| `connector_id`    | The UUID of the connector.                 | `a68028aa-7e48-4eb3-a5b5-7d1d74479610` |
 
 **Query Parameters:**
 
-| Parameter | Description                                   | Example |
-|-----------|-----------------------------------------------|---------|
-| `page`    | The page number for pagination.               | `1`     |
-| `size`    | The number of items per page.                 | `10`    |
+| Parameter | Description                        | Example |
+|-----------|------------------------------------|---------|
+| `page`    | The page number for pagination.    | `1`     |
+| `size`    | The number of items per page.      | `10`    |
 
 **Example cURL:**
 
@@ -36,7 +39,7 @@ Retrieves an overview of an organization, including resource counts, potential c
 curl 'https://rest.eazyops.cloud/overview/organisation/7bbc83cd-ba37-4f8a-9e34-3d1e24701678/a68028aa-7e48-4eb3-a5b5-7d1d74479610?page=1&size=10' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: en-US,en;q=0.9' \
-  -H 'authorization: Bearer <final_token>' \
+  -H 'authorization: Bearer <authentication_token>' \
   -H 'origin: https://eazyops.cloud' \
   -H 'priority: u=1, i' \
   -H 'referer: https://eazyops.cloud/' \
@@ -220,9 +223,10 @@ curl 'https://rest.eazyops.cloud/overview/organisation/7bbc83cd-ba37-4f8a-9e34-3
     "pages": 1
 }
 ```
+
 **Notes:**
 
-- The `id` in the top-level response is the `organisation_id`.
-- Each object in the `projects` array contains an `id` which is the `project_id`.
-- These IDs can be used in the Reports API for type `organisation` or `project` respectively.
-- The currency for all amounts related data in reponse section is USD $.
+*   The `id` in the top-level response is the `organisation_id`.
+*   Each object in the `projects` array contains an `id` which is the `project_id`.
+*   These IDs can be used in the [Reports API](reports.md) for `organisation` or `project` reports, respectively.
+*   The currency for all cost-related data in the response is USD ($).
