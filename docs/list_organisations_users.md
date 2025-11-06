@@ -4,7 +4,7 @@ This endpoint retrieves a list of organisations and their associated users that 
 
 ## API Endpoint
 
-`GET /api/v1/users/main/organisations`
+`GET https://rest.eazyops.cloud/api/v1/users/main/organisations`
 
 ### Query Parameters
 
@@ -12,6 +12,13 @@ This endpoint retrieves a list of organisations and their associated users that 
 |----------|---------|----------------------------|
 | `offset` | integer | The starting offset for pagination. |
 | `limit`  | integer | The maximum number of results to return. |
+
+### Request Headers
+
+| Header         | Value              |
+|----------------|--------------------|
+| `accept`       | `application/json` |
+| `Content-Type` | `application/json` |
 
 ### cURL Example
 
@@ -104,4 +111,3 @@ curl -X 'GET' \
 ### Usage Notes
 
 The `users` array in the response contains the email addresses of users who have been onboarded to EazyOps. You can use these email addresses with the [User Authentication API](authentication.md) to obtain an authentication token for a specific user. This token can then be used to call other APIs, such as the [Reports API](reports.md), to get data for that user's organisation report.
-
