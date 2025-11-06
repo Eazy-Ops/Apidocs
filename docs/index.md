@@ -6,6 +6,10 @@ Welcome to the EazyOps API! Our API provides programmatic access to your cloud c
 
 This document covers:
 
+- [List available organisations and users](list_organisations_users.md)
+### User Authentication
+
+- [List available organisations and users](list_organisations_users.md)
 - [User Authentication](authentication.md)
 - [Connected Clouds API](connected_clouds.md)
 - [Available Connectors API](connected_clouds_connectors.md)
